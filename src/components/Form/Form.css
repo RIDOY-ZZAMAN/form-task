@@ -1,0 +1,73 @@
+
+.common-style{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+center{
+    line-height: 60px;
+
+}
+
+center >input{
+    margin: 0 20px;
+    height: 5vh;
+    width: 20vw;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+center > button{
+    height: 6vh;
+    width: 6vw;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: indigo;
+    color: white;
+}
+
+select{
+    height: 5vh;
+    width: 20vw;
+}
+
+.input-boxes-container{
+    margin: 20px 0;
+    height: 70px;
+    padding: 10px;
+
+}
+
+.input-boxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  
+}
+
+.input-boxes input{
+    margin-right: 30px;
+    height: 5vh;
+    width: 14vw;
+}
+
+.input-boxes button{
+    height: 6vh;
+    width: 5vw;
+    background-color: indigo;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    
+
+}
+table{
+    
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+}
+
+table, th, td {
+    border:1px solid black;
+    border-collapse: collapse;
+  }
