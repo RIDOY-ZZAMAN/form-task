@@ -3,10 +3,22 @@
     background-color: white;
     border-radius: 10px;
     padding: 10px;
+    margin: 20px 0;
+}
+
+.inputField-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+
 }
 center{
     line-height: 60px;
 
+}
+
+.dropdowns{
+    height: 5vh;
+    width: 20vw;
 }
 
 center >input{
@@ -18,7 +30,7 @@ center >input{
 }
 center > button{
     height: 6vh;
-    width: 6vw;
+    width: 8vw;
     border-radius: 5px;
     font-weight: bold;
     background-color: indigo;
@@ -31,7 +43,7 @@ select{
 }
 
 .input-boxes-container{
-    margin: 20px 0;
+   
     height: 70px;
     padding: 10px;
 

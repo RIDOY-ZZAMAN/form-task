@@ -1,9 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Dropdown from './Dropdown';
 import './Form.css';
 
 const Form = () => {
-    const [dropDowns, setDropDown] = useState(["Dropdowns", "Project Name", "Client Name", "Panel Name", "Page Name", "Section/Screen Name", "Selector or Events Name"]);
+    const [items, setItems] = useState([0])
+    const [dropDowns, setDropDown] = useState([]);
     const [data, setData] = useState([]);
+    let option = 0
 
     const optinRef = useRef();
     const apinameRef = useRef();
@@ -13,18 +16,32 @@ const Form = () => {
     const imgRef = useRef();
 
 
+    const placeholder = ["Project Name", "Client Name", "Panel Name", "Page Name", "Section/Screen Name", "Selector or Events Name"]
 
-    const handleAddNew = (e) => {
+    useEffect(() => {
+        setDropDown(placeholder[option]);
+    }, [])
+
+    const handleAddOption = (e) => {
         e.preventDefault();
-        const Option = optinRef.current.value;
-        const proceed = window.confirm("Are You Sure, You want to add this option?")
-        if (proceed) {
-            setDropDown([...dropDowns, Option]);
-            alert("New Option added")
+        function shuffle(array) {
+            return array.map(item => item);
         }
-        optinRef.current.value = "";
+        var origin = ['1', '2', '3', '4', '5', '6', '7'];
+        var myArray = shuffle(origin);
+        var currentValue = null;
+        const proceed = window.confirm("Are You Sure, You want to add this option?");
+        if (proceed) {
+            setItems([...items, items.length]);
+            alert("New Option added");
+            currentValue = myArray;
 
+            if (!!currentValue) {
+                console.log("current value is", currentValue);
+            }
+        }
     }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,24 +80,44 @@ const Form = () => {
 
     }, [])
 
-    console.log(data);
 
     return (
         <div>
+
+            {/*-------------- Task 1 Start------------------ */}
             <form className='common-style'>
                 <center>
                     <h1>Task1</h1>
                     <hr />
-                    <strong> Enter the new option</strong>
-                    <input type="text" placeholder=' Enter Drop Down Option' ref={optinRef} />
-                    <button type='submit' onClick={(e) => handleAddNew(e)}>Add New</button>
-                    <hr />
-                    <select>
-                        {
-                            dropDowns.map((item, index) => <option key={index}>{item}</option>)
-                        }
+                    <div className='inputField-container'>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Project Name" />
+                        </div>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Client Name" />
+                        </div>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Panel Name" />
+                        </div>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Page Name" />
+                        </div>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Section/Screen Name" />
+                        </div>
+                        <div>
+                            <input type="radio" name="" id="" />  <input className='dropdowns' type="text" placeholder="Selector or Events Name" />
+                        </div>
+                        {items.map((item, idx) => <Dropdown item={item} idx={idx} dropDowns={dropDowns} ></Dropdown>
+                        )}
 
-                    </select>
+                    </div>
+                    <button
+                        onClick={e => handleAddOption(e)}
+                        type='button'
+
+                    > Add New</button>
+
                 </center>
             </form>
 
@@ -135,7 +172,22 @@ const Form = () => {
                 </table>
             </div>
 
-        </div>
+            {/*-------------- Task 1 End------------------ */}
+
+            {/*-------------- Task 2 Start------------------ */}
+            <div>
+
+                <form className='common-style'>
+                    <center>
+                        <h1>Task 2</h1>
+                        <button>FORM GENERATOR</button>
+                    </center>
+                </form>
+
+
+            </div>
+
+        </div >
     );
 };
 
