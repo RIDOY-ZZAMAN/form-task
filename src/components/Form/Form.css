@@ -83,3 +83,61 @@ table, th, td {
     border:1px solid black;
     border-collapse: collapse;
   }
+
+  .singleModalContainer{
+      position: relative;
+  }
+  .cancel-form{
+      position: absolute;
+      padding: 5px;
+      right: 0;
+   
+  }
+
+  
+
+.ParentModal{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(247, 238, 238);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.singleModal{
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 10px;
+    height: 50vh;
+    width: 50vw;
+    
+}
+
+.Form-Name, .newlyAddedField{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+
+}
+
+.Form-Name > input{
+    height: 3vh;
+    margin: 0 20px;
+} 
+
+.Form-Name > button{
+   padding: 4px 0;
+    width: 5vw;
+
+}
+
+.newAddedField > input{
+    height: 3vh;
+    margin: 0 20px;
+} 

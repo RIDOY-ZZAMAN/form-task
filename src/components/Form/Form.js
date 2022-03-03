@@ -3,9 +3,11 @@ import Dropdown from './Dropdown';
 import './Form.css';
 
 const Form = () => {
-    const [items, setItems] = useState([0])
+    const [items, setItems] = useState([]);
+    const [formItems, setFormItems] = useState([])
     const [dropDowns, setDropDown] = useState([]);
     const [data, setData] = useState([]);
+    const [buttonClick, setButtonClick] = useState(false);
     let option = 0
 
     const optinRef = useRef();
@@ -24,21 +26,11 @@ const Form = () => {
 
     const handleAddOption = (e) => {
         e.preventDefault();
-        function shuffle(array) {
-            return array.map(item => item);
-        }
-        var origin = ['1', '2', '3', '4', '5', '6', '7'];
-        var myArray = shuffle(origin);
-        var currentValue = null;
         const proceed = window.confirm("Are You Sure, You want to add this option?");
         if (proceed) {
             setItems([...items, items.length]);
             alert("New Option added");
-            currentValue = myArray;
 
-            if (!!currentValue) {
-                console.log("current value is", currentValue);
-            }
         }
     }
 
@@ -52,7 +44,7 @@ const Form = () => {
         const img = imgRef.current.value;
         const tableData = { apiname, reqapi, resapi, pr, img }
 
-        fetch('http://localhost:5000/data', {
+        fetch('https://floating-sierra-01269.herokuapp.com/data', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -74,11 +66,30 @@ const Form = () => {
 
 
     useEffect(() => {
-        fetch("http://localhost:5000/data")
+        fetch("https://floating-sierra-01269.herokuapp.com/data")
             .then(res => res.json())
             .then(data => setData(data))
 
     }, [])
+
+    const handleON = (e) => {
+        e.preventDefault();
+        setButtonClick(true)
+
+    }
+
+    const handleOFF = (e) => {
+        e.preventDefault();
+        setButtonClick(false)
+
+    }
+
+    const handleFormAdd = (e) => {
+        e.preventDefault();
+        setFormItems([...formItems, formItems.length])
+
+    }
+
 
 
     return (
@@ -180,7 +191,41 @@ const Form = () => {
                 <form className='common-style'>
                     <center>
                         <h1>Task 2</h1>
-                        <button>FORM GENERATOR</button>
+                        <button onClick={(e) => handleON(e)}>FORM GENERATOR</button>
+                        {
+                            buttonClick && <div className="ParentModal">
+                                <div className='singleModal'>
+                                    <div className='singleModalContainer'>
+                                        <button onClick={(e) => handleOFF(e)} className='cancel-form'>X</button>
+
+                                        <h2>Form Generator</h2>
+                                        <hr />
+                                        <div className='Form-Name'>
+                                            <h4>Name of the form is</h4>
+                                            <input type="text" name="" id="" />
+                                            <button onClick={(e) => handleFormAdd(e)}>Add Field</button>
+
+
+                                        </div>
+
+                                        <div className='newlyAddedField'>
+                                            <h4>Field Name</h4>
+                                            {
+                                                formItems.map((item, index) => <div className='newAddedField'>
+                                                    <input type="text" />
+
+                                                </div>)
+                                            }
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
                     </center>
                 </form>
 
